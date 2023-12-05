@@ -37,7 +37,7 @@ import { UserComponent } from './components/user/user.component';
       useRefreshTokens: true,
       cacheLocation: 'localstorage',
       authorizationParams: {
-        redirect_uri: 'https://tehaan-perera.github.io/home',
+        redirect_uri: 'https://tehaan-perera.github.io',
       },
     }),
   ],
