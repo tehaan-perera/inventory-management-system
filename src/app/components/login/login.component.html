@@ -1,0 +1,63 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Inventory Management System</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-card-title size="large">Inventory Management System</ion-card-title>
+  </ion-header>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Login</ion-card-title>
+      <ion-card-subtitle>
+        Please enter login credentials to proceed.
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <form (ngSubmit)="onLoginSql()" [formGroup]="LoginForm">
+        <ion-item>
+          <ion-input
+            label="Username"
+            labelPlacement="stacked"
+            type="text"
+            class="form-control"
+            [formControl]="username"
+            placeholder="Enter username"
+          />
+        </ion-item>
+        <span class="errorMsg" *ngIf="username.invalid && username.touched"
+          >Enter valid username.
+        </span>
+        <ion-item>
+          <ion-input
+            label="Password"
+            labelPlacement="stacked"
+            type="password"
+            class="form-control"
+            [formControl]="password"
+            placeholder="Enter password"
+          />
+        </ion-item>
+        <span
+          class="errorMsg"
+          *ngIf="password.invalid && password.touched"
+          >Enter valid password.
+        </span>
+        <ion-item>
+          <ion-button [disabled]="username.invalid || password.invalid" type="ngSubmit">
+            Login
+          </ion-button>
+        </ion-item>
+      </form>
+    </ion-card-content>
+  </ion-card>
+  <ion-alert
+    [isOpen]="failedLogin"
+    [header]="alertHeader"
+    [subHeader]="alertSubHeader"
+    [message]="alertMessage"
+    [buttons]="alertButton"
+    (didDismiss)="failedLogin = false"
+  />
+</ion-content>

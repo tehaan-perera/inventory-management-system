@@ -1,0 +1,110 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> Inventory Management System </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large"> Inventory Management System </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-card>
+    <ion-card-header>
+      <ion-breadcrumbs>
+        <ion-breadcrumb routerLink="/home">Home</ion-breadcrumb>
+        <ion-breadcrumb>Stock Items Database</ion-breadcrumb>
+      </ion-breadcrumbs>
+      <div class="flex view-stock-header">
+        <ion-card-title class="inline"> Stock Items Database </ion-card-title>
+        <p class="current-user inline">Logged in as: {{ user?.name }}</p>
+        <ion-button
+          color="light"
+          class="refresh-button"
+          (click)="onRefreshBtnClick()"
+        >
+          <ion-icon name="refresh" />
+        </ion-button>
+        <ion-button color="light" (click)="addBtnClick()">
+          <ion-icon name="add" />
+        </ion-button>
+      </div>
+    </ion-card-header>
+    <ion-card-content class="center">
+      <ion-grid class="ion-text-uppercase grid-header">
+        <ion-row>
+          <ion-col>Stock Code</ion-col>
+          <ion-col>Stock Name</ion-col>
+          <ion-col>Stock Description</ion-col>
+          <ion-col>Stock Quantity</ion-col>
+          <ion-col>Actions</ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-grid *ngFor="let stockItem of stockItems">
+        <ion-row class="items-center">
+          <ion-col>{{ stockItem.code }}</ion-col>
+          <ion-col>{{ stockItem.name }}</ion-col>
+          <ion-col>{{ stockItem.desc }}</ion-col>
+          <ion-col>{{ stockItem.qty }}</ion-col>
+          <ion-col>
+            <ion-button
+              color="light"
+              class="actionBtn"
+              (click)="onEditBtnClick(stockItem.id)"
+            >
+              <ion-icon color="dark" name="pencil" slot="icon-only" />
+            </ion-button>
+            <ion-button
+              color="light"
+              class="actionBtn"
+              (click)="onDeleteBtnClick(stockItem.id)"
+            >
+              <ion-icon color="danger" name="trash-bin" />
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+  <ion-card *ngIf="noStock" class="center">
+    <ion-card-content>
+      <p>No stock items found in database.</p>
+    </ion-card-content>
+  </ion-card>
+  <ion-alert
+    [isOpen]="isAlertOpen"
+    [header]="alertHeading"
+    [message]="alertMessage"
+    [buttons]="alertButton"
+    (didDismiss)="(this.isAlertOpen === false)"
+  />
+  <ion-modal
+    [isOpen]="isModalOpen"
+    [backdropDismiss]="true"
+    (didDismiss)="cancel()"
+  >
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Confirm Deletion</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="cancel()">Cancel</ion-button>
+            <ion-button [strong]="true" (click)="confirm()">
+              Confirm
+            </ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <ion-item>
+          <p>Are you sure you want to delete the following stock item?</p>
+        </ion-item>
+        <ion-item>
+          <ul>
+            <li>{{ deleteCode + " " + deleteName }}</li>
+          </ul>
+        </ion-item>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+</ion-content>

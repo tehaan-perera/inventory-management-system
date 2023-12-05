@@ -1,20 +1,46 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title> Inventory Management System </ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large"> Inventory Management System </ion-title>
     </ion-toolbar>
   </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-card>
+    <ion-card-header>
+      <ion-breadcrumbs>
+        <ion-breadcrumb routerLink="/home">Home</ion-breadcrumb>
+      </ion-breadcrumbs>
+      <div class="flex">
+        <ion-card-title class="inline">Choose Option</ion-card-title>
+        <p class="current-user inline"><span *ngIf="this.auth.isAuthenticated$">Logged in as: {{user?.name}}</span></p>
+      </div>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-button
+          *ngIf="!(auth.isAuthenticated$ | async)"
+          (click)="auth.loginWithRedirect()"
+          >Log In
+        </ion-button>
+        <ion-button *ngIf="(auth.isAuthenticated$ | async)"
+        (click)="auth.logout()">
+          Log Out
+        </ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-button (click)="onProfileBtnClick()">
+          Profile
+        </ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-button (click)="onStockBtnClick()">
+          Stock Items Database
+        </ion-button>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

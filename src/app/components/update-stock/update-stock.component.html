@@ -1,0 +1,100 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> Inventory Management System </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large"> Inventory Management System </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-card>
+      <ion-card-header>
+        <ion-breadcrumbs>
+          <ion-breadcrumb routerLink="/home"> Home </ion-breadcrumb>
+          <ion-breadcrumb routerLink="/view-stock"
+            >Stock Items Database
+          </ion-breadcrumb>
+          <ion-breadcrumb>Update Stock</ion-breadcrumb>
+        </ion-breadcrumbs>
+        <div class="flex">
+          <ion-card-title class="inline">
+            Update Existing Stock Item
+          </ion-card-title>
+          <p class="current-user inline">Logged in as: {{ user?.name }}</p>
+        </div>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Enter details of stock item to be updated.</p>
+        <form [formGroup]="stockUpdateForm" (ngSubmit)="onSubmit()">
+          <ion-item lines="full">
+            <ion-input
+              label="Stock Code"
+              labelPlacement="stacked"
+              class="form-control"
+              [formControl]="stockCode"
+              placeholder="Stock Description"
+              type="text"
+            />
+          </ion-item>
+          <ion-item lines="full">
+            <ion-input
+              label="Stock Name"
+              labelPlacement="stacked"
+              class="form-control"
+              [formControl]="stockName"
+              placeholder="Stock Name"
+              type="text"
+            />
+          </ion-item>
+          <ion-item lines="full">
+            <ion-input
+              label="Stock Description"
+              labelPlacement="stacked"
+              class="form-control"
+              [formControl]="stockDesc"
+              placeholder="Stock Description"
+              type="text"
+            />
+          </ion-item>
+          <span class="errorMsg" *ngIf="stockDesc.touched && stockDesc.invalid">
+            Please limit stock description to 50 characters.
+          </span>
+          <ion-item lines="full">
+            <ion-input
+              label="Stock Quantity"
+              labelPlacement="stacked"
+              class="form-control"
+              [formControl]="stockQty"
+              placeholder="Stock Quantity"
+            />
+          </ion-item>
+          <span
+            class="errorMsg"
+            *ngIf="stockQty.valueChanges && stockQty.invalid"
+          >
+            Invalid stock quantity.
+          </span>
+          <ion-item>
+            <ion-button
+              id="submitBtn"
+              [disabled]="stockDesc.pristine && stockQty.pristine"
+              type="ngSubmit"
+            >
+              Update Item
+            </ion-button>
+          </ion-item>
+        </form>
+      </ion-card-content>
+      <ion-alert
+        [isOpen]="isAlertOpen"
+        [header]="alertHeader"
+        [message]="alertMessage"
+        [buttons]="alertButton"
+        (didDismiss)="isAlertOpen = false"
+      />
+    </ion-card>
+  </ion-content>
+</ion-content>

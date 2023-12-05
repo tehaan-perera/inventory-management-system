@@ -1,0 +1,59 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <div>
+      <ion-title> Inventory Management System </ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <div>
+        <ion-title> Inventory Management System </ion-title>
+      </div>
+    </ion-toolbar>
+  </ion-header>
+  <ion-card>
+    <ion-card-header>
+      <ion-breadcrumbs>
+        <ion-breadcrumb routerLink="/home">Home</ion-breadcrumb>
+        <ion-breadcrumb>User Profile</ion-breadcrumb>
+      </ion-breadcrumbs>
+      <div class="flex">
+        <ion-card-title class="inline">User Profile</ion-card-title>
+        <p class="current-user inline"></p>
+      </div>
+    </ion-card-header>
+    <ion-card-content>
+      <img src="{{ userObject?.picture }}" alt="" />
+      <p>
+        Name:
+        <ion-text class="user-info">{{ userObject?.name }}</ion-text>
+      </p>
+      <p>
+        Username:
+        <ion-text class="user-info">{{ userObject?.nickname }} </ion-text>
+      </p>
+      <p>
+        Email:
+        <ion-text class="user-info">{{ userObject?.email }}</ion-text>
+
+        <ion-text color="success" *ngIf="userObject?.email_verified">
+          Verified
+        </ion-text>
+
+        <ion-text
+          color="danger"
+          *ngIf="!userObject?.email_verified"
+          #unverified
+        >
+          Unverified
+        </ion-text>
+      </p>
+      <p>
+        Last Updated:
+        <ion-text class="user-info">{{ userObject?.updated_at }}</ion-text>
+      </p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

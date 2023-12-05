@@ -2,7 +2,7 @@ import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'io.ionic.starter',
-  appName: 'stockApp',
+  appName: 'Inventory Management System',
   webDir: 'www',
   server: {
     androidScheme: 'https'

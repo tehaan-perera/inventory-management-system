@@ -1,0 +1,102 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <div>
+      <ion-title> Inventory Management System </ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <div>
+        <ion-title> Inventory Management System </ion-title>
+      </div>
+    </ion-toolbar>
+  </ion-header>
+  <ion-card>
+    <ion-card-header>
+      <ion-breadcrumbs>
+        <ion-breadcrumb routerLink="/home">Home</ion-breadcrumb>
+        <ion-breadcrumb routerLink="/view-stock">
+          Stock Items Database
+        </ion-breadcrumb>
+        <ion-breadcrumb>Add Stock</ion-breadcrumb>
+      </ion-breadcrumbs>
+      <div class="flex">
+        <ion-card-title class="inline">Add New Stock Item</ion-card-title>
+        <p class="current-user inline">Logged in as: {{ user?.name }}</p>
+      </div>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Enter details of new stock item</p>
+      <form [formGroup]="AddStockForm" (ngSubmit)="onSubmit()">
+        <ion-item lines="full">
+          <ion-input
+            label="Stock Code"
+            labelPlacement="stacked"
+            class="form-control"
+            [formControl]="stockCode"
+            placeholder="Stock Code"
+            type="text"
+          />
+        </ion-item>
+        <span class="errorMsg" *ngIf="stockCode.invalid && stockCode.touched">
+          Enter valid stock code.
+        </span>
+        <ion-item>
+          <ion-input
+            label="Stock Name"
+            labelPlacement="stacked"
+            class="form-control"
+            [formControl]="stockName"
+            placeholder="Stock Name"
+            type="text"
+          />
+        </ion-item>
+        <span class="errorMsg" *ngIf="stockName.invalid && stockName.touched">
+          Enter valid stock name.
+        </span>
+        <ion-item>
+          <ion-input
+            label="Stock Description"
+            labelPlacement="stacked"
+            class="form-control"
+            [formControl]="stockDesc"
+            placeholder="Stock Description"
+            type="text"
+          />
+        </ion-item>
+        <ion-item>
+          <ion-input
+            label="Stock Quantity"
+            labelPlacement="stacked"
+            class="form-control"
+            [formControl]="stockQty"
+            placeholder="Stock Quantity"
+          />
+        </ion-item>
+        <span class="errorMsg" *ngIf="stockQty.invalid && stockQty.touched">
+          Enter valid stock quantity.
+        </span>
+        <ion-item>
+          <ion-button
+            id="submitBtn"
+            [disabled]="
+              stockCode.invalid || stockName.invalid || stockQty.invalid
+            "
+            type="ngSubmit"
+          >
+            Add Item
+          </ion-button>
+        </ion-item>
+      </form>
+    </ion-card-content>
+  </ion-card>
+  <ion-alert
+    [header]="alertHeader"
+    [message]="alertMessage"
+    [buttons]="alertButton"
+    [isOpen]="isAlertOpen"
+    (didDismiss)="onAlertDismiss()"
+  />
+</ion-content>
