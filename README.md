@@ -1,4 +1,4 @@
-# Inventory Management System (v0.0.1)
+# Inventory Management System (v1.0.1)
 
 ## Purpose
 
