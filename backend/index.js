@@ -17,6 +17,7 @@ const corsOptions = {
   methods: ["GET", "POST", "PUT", "DELETE"],
   headers: ["Content-Type", "Authorization"],
 };
+// CORS middleware
 app.use(cors(corsOptions));
 
 app.listen(port, () => {
