@@ -7,7 +7,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard, AuthModule } from '@auth0/auth0-angular';
 
-import { LoginComponent } from './components/login/login.component';
 import { AppComponent } from './app.component';
 import { AddStockComponent } from './components/add-stock/add-stock.component';
 import { UpdateStockComponent } from './components/update-stock/update-stock.component';
@@ -16,7 +15,6 @@ import { UserComponent } from './components/user/user.component';
 
 @NgModule({
   declarations: [
-    LoginComponent,
     AppComponent,
     AddStockComponent,
     UpdateStockComponent,

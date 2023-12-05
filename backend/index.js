@@ -124,7 +124,6 @@ app.put("/stock/:id", (req, res) => {
 });
 
 //  @TEST RUN
-
 // db.run(`INSERT INTO stock (stockCode, stockName, stockDesc, stockQty)  VALUES (?,?,?,?);`,
 // [
 //   "TEST",

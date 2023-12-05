@@ -4,9 +4,12 @@
 
 
 ## Technologies Used
-* Angular v16.2.9
-* Ionic v7.1.1
-* Node v18.10.0
+* Node v20.9.0
+* NPM 10.1.0
+* angular/cli@16.2.10
+* ionic/angular@7.5.5
+* express@4.18.2
+* sqlite3@5.1.6
 
 
 
