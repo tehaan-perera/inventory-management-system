@@ -34,7 +34,7 @@ const routes: Routes = [
     path: 'view-stock',
     pathMatch: 'prefix',
     component: ViewStockComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: 'user-profile',
