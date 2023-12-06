@@ -11,7 +11,8 @@ import { AuthService } from '@auth0/auth0-angular';
 })
 export class ViewStockComponent implements OnInit {
   stockItems: any[] | undefined;
-  user : any;
+  user: any;
+  isLoading: boolean = true
   // Alert variables
   alertHeading?: string;
   alertMessage?: string;
@@ -26,13 +27,17 @@ export class ViewStockComponent implements OnInit {
   deleteCode?: string;
   deleteName?: string;
 
-  constructor(private sqlService: SqlService, private router: Router, public auth:AuthService) {}
+  constructor(
+    private sqlService: SqlService,
+    private router: Router,
+    public auth: AuthService
+  ) {}
 
   ngOnInit(): void {
-    if (this.auth.isAuthenticated$){
+    if (this.auth.isAuthenticated$) {
       this.auth.user$.subscribe((userData) => {
         this.user = userData;
-      })
+      });
     }
     this.sqlService.getStockItems().subscribe((data: any) => {
       if (data.length === 0) {
@@ -48,6 +53,7 @@ export class ViewStockComponent implements OnInit {
         desc: item.stockDesc,
         qty: item.stockQty,
       }));
+      this.isLoading = false;
     });
   }
 

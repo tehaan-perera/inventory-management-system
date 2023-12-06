@@ -64,7 +64,7 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-      <ion-progress-bar type="indeterminate"></ion-progress-bar>
+      <ion-progress-bar type="indeterminate" id="progress-bar" *ngIf="isLoading"></ion-progress-bar>
     </ion-card-content>
   </ion-card>
   <ion-card *ngIf="noStock" class="center">
