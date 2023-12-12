@@ -20,4 +20,4 @@
 4. Use `cd ./backend` to navigate into the backend directory.
 5. Open the terminal in the directory and run `npm install` to install dependencies.
 
-6. Run `ionic serve` to run the application on http://localhost:8100
+6. Run `ionic serve` to run the application on `http://localhost:8100`
