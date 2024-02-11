@@ -22,19 +22,19 @@ const routes: Routes = [
   {
     path: 'add-stock',
     component: AddStockComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: 'update-stock/:id',
     pathMatch: 'prefix',
     component: UpdateStockComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: 'view-stock',
     pathMatch: 'prefix',
     component: ViewStockComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: 'user-profile',
@@ -54,4 +54,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

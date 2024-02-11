@@ -35,7 +35,7 @@ import { UserComponent } from './components/user/user.component';
       useRefreshTokens: true,
       cacheLocation: 'localstorage',
       authorizationParams: {
-        redirect_uri: 'https://tehaan-perera.github.io',
+        redirect_uri: 'localhost:8100/home',
       },
     }),
   ],
@@ -50,4 +50,4 @@ import { UserComponent } from './components/user/user.component';
 
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

@@ -12,7 +12,7 @@ import { Observable, map } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthGuardService {
-  constructor(public auth: AuthService, public router: Router) {}
+  constructor(public auth: AuthService, public router: Router) { }
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -24,9 +24,6 @@ export class AuthGuardService {
     | Promise<boolean | UrlTree> {
     return this.auth.isAuthenticated$.pipe(
       map(isLoggedIn => {
-        if (!isLoggedIn) {
-          return this.router.parseUrl('/login');
-        }
         return true;
       })
     );

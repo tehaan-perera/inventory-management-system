@@ -5,10 +5,10 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class SqlService {
-  // private apiUrl = 'http://localhost:3500';
-  private apiUrl = 'https://ims-sql-service.onrender.com'
+  private apiUrl = 'http://localhost:3500';
+  // private apiUrl = 'https://ims-sql-service.onrender.com'
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
   getLoginDetails(username?: any) {
     return this.http.get(`${this.apiUrl}/login/`, username);
   }
